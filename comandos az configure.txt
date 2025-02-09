@@ -1,0 +1,18 @@
+az configure --defaults group=Sevidor_MS sql-server=sqlmissao04
+
+az sql db show-connection-string --client sqlcmd --name sqlmissao04
+
+sqlcmd -S tcp:sqlmissao04.database.windows.net,1433 -d dbestacio -U gilvan -P maria#1010 -N -l 30
+
+
+CREATE TABLE Drivers (DriverID int, LastName varchar(255), FirstName varchar(255), OriginCity varchar(255));
+
+INSERT INTO Drivers (DriverID, LastName, FirstName, OriginCity) VALUES (754, 'Silva', 'João', 'Rio de Janeiro');
+
+SELECT DriverID, OriginCity FROM Drivers;
+
+UPDATE Drivers SET OriginCity='São Paulo' WHERE DriverID=754;
+
+DELETE FROM Drivers WHERE DriverID=754;
+
+SELECT COUNT(*) FROM Drivers;
